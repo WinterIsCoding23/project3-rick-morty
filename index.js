@@ -1,6 +1,6 @@
-import {createCharacterCard} from "./components/card/card.js";
-
-const cardContainer = document.querySelector('[data-js="card-container"]');
+import { createCharacterCard } from "./components/card/card.js";
+export const cardContainer = document.querySelector(
+  '[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
@@ -11,6 +11,7 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
+
 let maxPage = 42;
 let page = 1;
 let searchQuery = "";
@@ -69,3 +70,4 @@ console.log(fetchCharacters())
 
 
 //cardContainer.append(newCards);
+
