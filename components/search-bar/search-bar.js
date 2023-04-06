@@ -1,7 +1,7 @@
 export const form = document.querySelector("[data-js='search-bar']");
 
 import { fetchCharacters } from "../../index.js";
-import {setSearchQuery, page, maxPage, pagination, setPage} from "../../index.js";
+import {setSearchQuery, page, setMaxPage, pagination, setPage} from "../../index.js";
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -9,17 +9,20 @@ form.addEventListener("submit", (event) => {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     //console.log(data);
-    console.log(event);
+    //console.log(event);
     //console.log( data.query);
     
     setSearchQuery (data.query);
-    //console.log();
-    
-    
+    //console.log();    
     
     fetchCharacters();
-    pagination.textContent = "";
-    pagination.textContent = `${page}/${maxPage}`;
+
+    
+    //pagination.textContent = "";
+    //setPage(promise);
+    //maxPage = 
+    pagination.textContent = `${page}/${setMaxPage(promise)}`;
+
 
 })
 

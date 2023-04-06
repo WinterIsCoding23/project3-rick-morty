@@ -29,9 +29,13 @@ export function setPage (value){
   page = value;
 }
 
-export function getPage (){
-  return page;
+export function setMaxPage (value){
+  maxPage = value;
 }
+
+// export function getPage (){
+//   return page;
+// }
 
 // Fetch Data
 
