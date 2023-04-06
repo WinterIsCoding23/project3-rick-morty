@@ -56,15 +56,18 @@ async function fetchCharacters(page) {
   }
 }
 
-console.log(fetchCharacters());
+// Pagination
 
-//console.log(fetchCharacters());
+nextButton.addEventListener("click", async (event) => {
+  console.log("I clicked!!");
+  try {
+    const response = await fetch("https://rickandmortyapi.com/api/character");
 
-//console.log(array);
+    if (!response.ok) {
+      console.error("Bad Response");
+    } else {
+    }
+  } catch {}
+});
 
-// createCharacterCard
-// const test =Object.values(data).forEach(key => {
-//   console.log(test);
-// })
-
-//cardContainer.append(newCards);
+fetchCharacters(page);
