@@ -1,4 +1,8 @@
+
+
 import { createCharacterCard } from "./components/card/card.js";
+import {form} from "./components/search-bar/search-bar.js"; 
+
 export const cardContainer = document.querySelector(
   '[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -11,10 +15,9 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-
 let maxPage = 42;
 let page = 1;
-let searchQuery = "";
+
 
 // Fetch Data
 async function fetchCharacters() {
@@ -58,16 +61,4 @@ async function fetchCharacters() {
 
 console.log(fetchCharacters())
 
-//console.log(fetchCharacters());
-
-
-//console.log(array);
-
-// createCharacterCard
-// const test =Object.values(data).forEach(key => {
-//   console.log(test);
-// })
-
-
-//cardContainer.append(newCards);
 
