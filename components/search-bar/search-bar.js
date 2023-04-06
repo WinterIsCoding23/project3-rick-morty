@@ -1,7 +1,7 @@
 export const form = document.querySelector("[data-js='search-bar']");
 
 import { fetchCharacters } from "../../index.js";
-import {setSearchQuery, setPage, getPage} from "../../index.js";
+import {setSearchQuery, page, maxPage, pagination, setPage} from "../../index.js";
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -15,9 +15,12 @@ form.addEventListener("submit", (event) => {
     setSearchQuery (data.query);
     //console.log();
     
-    setPage(1);
+    
+
 
     fetchCharacters();
+    pagination.textContent = `${page}/${maxPage}`;
+
 })
 
 

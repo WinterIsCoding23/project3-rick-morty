@@ -15,11 +15,11 @@ const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+export const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-let maxPage = 42;
-let page = 1;
+export let maxPage = 42;
+export let page = 1;
 let searchQuery = "";
 export function setSearchQuery (text) {
   searchQuery = text;
@@ -45,6 +45,9 @@ export async function fetchCharacters() {
       const promise = await response.json();
       const cardsData = promise.results;
       console.log(promise);
+      const maxPageValue= promise.info.pages;
+      console.log(maxPageValue);
+      maxPage = maxPageValue;
 
 
       cardContainer.innerHTML = "";
