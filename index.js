@@ -39,6 +39,8 @@ export async function fetchCharacters() {
 
   try {
     const response = await fetch (`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
+
+    pagination.textContent = `${page}/${maxPage}`;
     
 
     if (response.ok) {
@@ -88,7 +90,7 @@ nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
     fetchCharacters();
-    pagination.textContent = `${page}/${maxPage}`;
+    //pagination.textContent = `${page}/${maxPage}`;
   }
 });
 
@@ -98,6 +100,6 @@ prevButton.addEventListener("click", () => {
   if (page > 1) {
     page--;
     fetchCharacters();
-    pagination.textContent = `${page}/${maxPage}`;
+    //pagination.textContent = `${page}/${maxPage}`;
   }
 });

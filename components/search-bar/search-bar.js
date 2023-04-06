@@ -16,9 +16,9 @@ form.addEventListener("submit", (event) => {
     //console.log();
     
     
-
-
+    
     fetchCharacters();
+    pagination.textContent = "";
     pagination.textContent = `${page}/${maxPage}`;
 
 })
