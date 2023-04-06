@@ -1,7 +1,4 @@
-export const cardContainer = document.querySelector(
-
-  '[data-js="card-container"]');
-
+export const cardContainer = document.querySelector('[data-js="card-container"]');
 
 import { createCharacterCard } from "./components/card/card.js";
 import {form} from "./components/search-bar/search-bar.js"; 
@@ -38,7 +35,6 @@ export function setMaxPage (value){
 // }
 
 // Fetch Data
-
 export async function fetchCharacters() {
 
   try {
@@ -50,7 +46,7 @@ export async function fetchCharacters() {
     if (response.ok) {
       const promise = await response.json();
       const cardsData = promise.results;
-      console.log(promise);
+      //console.log(promise);
       const maxPageValue= promise.info.pages;
       console.log(maxPageValue);
       maxPage = maxPageValue;
@@ -75,7 +71,6 @@ export async function fetchCharacters() {
         characterInformation.cardOcurrences = cardsData.episode.length;
 
         //console.log(characterInformation);
-
         createCharacterCard(characterInformation);
       });
     } else {
@@ -83,27 +78,29 @@ export async function fetchCharacters() {
     }
   } catch (error) {
     console.error("An Error occurred");
-  }
+  } 
 }
 
 
 fetchCharacters();
+
 
 nextButton.addEventListener("click", () => {
   console.log("I clicked!!");
   if (page < maxPage) {
     page++;
     fetchCharacters();
-    //pagination.textContent = `${page}/${maxPage}`;
+    
+    pagination.innerHTML = `${page}/${maxPage}`;
   }
 });
-
 
 prevButton.addEventListener("click", () => {
   console.log("I clicked!!");
   if (page > 1) {
     page--;
     fetchCharacters();
-    //pagination.textContent = `${page}/${maxPage}`;
+    
+    pagination.textContent = `${page}/${maxPage}`;
   }
 });
