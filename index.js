@@ -1,4 +1,4 @@
-//import createCharacterCard from "./components/card/card.js";
+import {createCharacterCard} from "./components/card/card.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -34,7 +34,6 @@ async function fetchCharacters() {
           cardType: "",
           cardOcurrences: "",
         }
-
          
         characterInformation.cardStatus = cardsData.status;
         characterInformation.cardType = cardsData.type;
@@ -43,6 +42,8 @@ async function fetchCharacters() {
         characterInformation.cardOcurrences = cardsData.episode.length;
         
         console.log(characterInformation);
+
+        createCharacterCard (characterInformation);
 
       });
      
