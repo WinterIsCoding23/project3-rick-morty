@@ -12,21 +12,21 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-
 let maxPage = 42;
 let page = 1;
 let searchQuery = "";
 
 // Fetch Data
-async function fetchCharacters() {
+async function fetchCharacters(page) {
   try {
     const response = await fetch(
-      "https://rickandmortyapi.com/api/character?page=<pageIndex>"
+      `https://rickandmortyapi.com/api/character?page=${page}`
     );
 
     if (response.ok) {
       const promise = await response.json();
       const cardsData = promise.results;
+      console.log(promise);
       console.log(cardsData);
 
       cardsData.forEach((cardsData) => {
