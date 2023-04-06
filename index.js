@@ -25,6 +25,14 @@ export function setSearchQuery (text) {
   searchQuery = text;
 }
 
+export function setPage (value){
+  page = value;
+}
+
+export function getPage (){
+  return page;
+}
+
 // Fetch Data
 
 export async function fetchCharacters() {
@@ -36,6 +44,7 @@ export async function fetchCharacters() {
     if (response.ok) {
       const promise = await response.json();
       const cardsData = promise.results;
+      console.log(promise);
 
 
       cardContainer.innerHTML = "";
@@ -56,7 +65,7 @@ export async function fetchCharacters() {
         characterInformation.cardImage = cardsData.image;
         characterInformation.cardOcurrences = cardsData.episode.length;
 
-        console.log(characterInformation);
+        //console.log(characterInformation);
 
         createCharacterCard(characterInformation);
       });
