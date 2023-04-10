@@ -1,42 +1,36 @@
-export const cardContainer = document.querySelector(
-
-  '[data-js="card-container"]');
-
+export const cardContainer = document.querySelector('[data-js="card-container"]');
 
 import { createCharacterCard } from "./components/card/card.js";
 import {form} from "./components/search-bar/search-bar.js"; 
 
-
-
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
+const searchBarContainer = document.querySelector('[data-js="search-bar-container"]');
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
-// Added: export
 export const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-// Added: exports
 export let maxPage = 42;
 export let page = 1;
+// Add page-function
+export function setPage (number){
+  page = number; 
+}
+
 let searchQuery = "";
 export function setSearchQuery (text) {
   searchQuery = text;
 }
 
 // Fetch Data
-
 export async function fetchCharacters() {
 
   try {
     const response = await fetch (`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
 
     // Added: pagination 1/42:
-    pagination.textContent = `${page}/${maxPage}`;
-    
+    pagination.textContent = `${page}/${maxPage}`;    
 
     if (response.ok) {
       const promise = await response.json();
@@ -46,7 +40,6 @@ export async function fetchCharacters() {
       const maxPageValue= promise.info.pages;
       console.log(maxPageValue);
       maxPage = maxPageValue;
-
 
       cardContainer.innerHTML = "";
 
@@ -90,7 +83,6 @@ nextButton.addEventListener("click", () => {
     pagination.textContent = `${page}/${maxPage}`;
   }
 });
-
 
 prevButton.addEventListener("click", () => {
   console.log("I clicked!!");
