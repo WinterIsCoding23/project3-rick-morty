@@ -31,6 +31,9 @@ export async function fetchCharacters() {
 
   try {
     const response = await fetch (`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
+
+    // Added: pagination 1/42:
+    pagination.textContent = `${page}/${maxPage}`;
     
 
     if (response.ok) {
