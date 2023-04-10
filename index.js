@@ -15,11 +15,13 @@ const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+// Added: export
+export const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-let maxPage = 42;
-let page = 1;
+// Added: exports
+export let maxPage = 42;
+export let page = 1;
 let searchQuery = "";
 export function setSearchQuery (text) {
   searchQuery = text;
@@ -31,11 +33,19 @@ export async function fetchCharacters() {
 
   try {
     const response = await fetch (`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
+
+    // Added: pagination 1/42:
+    pagination.textContent = `${page}/${maxPage}`;
     
 
     if (response.ok) {
       const promise = await response.json();
       const cardsData = promise.results;
+
+      // Added: 
+      const maxPageValue= promise.info.pages;
+      console.log(maxPageValue);
+      maxPage = maxPageValue;
 
 
       cardContainer.innerHTML = "";
@@ -56,9 +66,9 @@ export async function fetchCharacters() {
         characterInformation.cardImage = cardsData.image;
         characterInformation.cardOcurrences = cardsData.episode.length;
 
-        console.log(characterInformation);
-
         createCharacterCard(characterInformation);
+        // Added following line: pagination...
+        pagination.innerHTML = `${page}/${maxPage}`;
       });
     } else {
       console.error("Bad Response");
@@ -76,6 +86,7 @@ nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
     fetchCharacters();
+    // Change .innerHTML to .textContent
     pagination.textContent = `${page}/${maxPage}`;
   }
 });
