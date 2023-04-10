@@ -5,6 +5,9 @@ import {setSearchQuery} from "../../index.js";
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    // Added: page-counter starts from 0: 
+    pagination.textContent = "";
     
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
