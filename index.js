@@ -44,6 +44,7 @@ export async function fetchCharacters() {
 
       // Added: 
       const maxPageValue= promise.info.pages;
+      console.log(maxPageValue);
       maxPage = maxPageValue;
 
 
@@ -65,9 +66,9 @@ export async function fetchCharacters() {
         characterInformation.cardImage = cardsData.image;
         characterInformation.cardOcurrences = cardsData.episode.length;
 
-        console.log(characterInformation);
-
         createCharacterCard(characterInformation);
+        // Added following line: pagination...
+        pagination.innerHTML = `${page}/${maxPage}`;
       });
     } else {
       console.error("Bad Response");
@@ -85,7 +86,8 @@ nextButton.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
     fetchCharacters();
-    pagination.innerHTML = `${page}/${maxPage}`;
+    // Change .innerHTML to .textContent
+    pagination.textContent = `${page}/${maxPage}`;
   }
 });
 

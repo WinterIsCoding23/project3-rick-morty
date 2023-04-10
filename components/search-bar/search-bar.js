@@ -11,13 +11,9 @@ form.addEventListener("submit", (event) => {
     
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
-    console.log(event);
-    console.log( data.query);
     
     setSearchQuery (data.query);
-    console.log();
-    
+        
     fetchCharacters();
 })
 
