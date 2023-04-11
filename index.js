@@ -75,7 +75,7 @@ export async function fetchCharacters() {
 fetchCharacters();
 
 nextButton.addEventListener("click", () => {
-  console.log("I clicked!!");
+  //console.log("I clicked!!");
   if (page < maxPage) {
     page++;
     fetchCharacters();
@@ -85,7 +85,7 @@ nextButton.addEventListener("click", () => {
 });
 
 prevButton.addEventListener("click", () => {
-  console.log("I clicked!!");
+  //console.log("I clicked!!");
   if (page > 1) {
     page--;
     fetchCharacters();
